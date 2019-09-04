@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FIREBASE_CONFIG } from './secrets';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -19,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,
