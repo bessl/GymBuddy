@@ -17,4 +17,10 @@ export class ExerciseService {
   getExercises() {
     return [...this.exercises];
   }
+
+  getExercise(exerciseID: string) {
+    return this.getExercises().find(
+        e => e.id === exerciseID
+    );
+  }
 }
