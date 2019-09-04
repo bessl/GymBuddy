@@ -5,7 +5,6 @@
 </ion-header>
 
 <ion-content>
-
   <ion-card>
     <ion-card-content>
       <form [formGroup]="loginFormGroup">
@@ -17,7 +16,7 @@
           <ion-label>Password</ion-label>
           <ion-input><ion-input formControlName="password" type="password"></ion-input></ion-input>
         </ion-item>
-        <ion-button margin-top expand="full" [disabled]="! loginFormGroup.valid">Login</ion-button>
+        <ion-button margin-top expand="full" [disabled]="loginFormGroup.invalid">Login</ion-button>
       </form>
     </ion-card-content>
   </ion-card>
