@@ -11,11 +11,11 @@ export class ListPage implements OnInit {
 
   exercises: Exercise[] = [];
 
-  constructor(exerciseService: ExerciseService) {
-    this.exercises = exerciseService.getExercises();
+  constructor(private exerciseService: ExerciseService) {
   }
 
   ngOnInit() {
+    this.exercises = this.exerciseService.getExercises();
   }
 
 }
