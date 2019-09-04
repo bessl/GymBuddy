@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ExerciseService} from '../exercise.service';
+import {Exercise} from '../models';
 
 @Component({
   selector: 'app-list',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPage implements OnInit {
 
-  constructor() { }
+  exercises: Exercise[] = [];
+
+  constructor(exerciseService: ExerciseService) {
+    this.exercises = exerciseService.getExercises();
+  }
 
   ngOnInit() {
   }
