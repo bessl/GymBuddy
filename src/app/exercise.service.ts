@@ -15,6 +15,6 @@ export class ExerciseService {
   constructor() { }
 
   getExercises() {
-    return this.exercises;
+    return [...this.exercises];
   }
 }
