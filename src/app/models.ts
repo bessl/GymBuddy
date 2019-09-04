@@ -1,10 +1,10 @@
-export class Exercise {
+export interface Exercise {
     id: string;
     title: string;
     imgUrl: string;
 }
 
-export class Set {
+export interface Set {
     id: string;
     createdAt: Date;
     createdBy: string;
@@ -13,7 +13,7 @@ export class Set {
     weight: number;
 }
 
-export class User {
+export interface User {
     id: string;
     email: string;
     password: string;
