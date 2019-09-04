@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { LoginCredential} from '../models';
+import {LoginService} from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginPage implements OnInit {
   loginFormGroup: FormGroup;
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(private loginService: LoginService, formBuilder: FormBuilder) {
     this.loginFormGroup = formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -17,6 +19,14 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  login() {
+    const loginCredential: LoginCredential = this.loginFormGroup.value;
+    this.loginService.login(loginCredential)
+      .then(authData => {
+        console.log(authData);
+      });
   }
 
 }
