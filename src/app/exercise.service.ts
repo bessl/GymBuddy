@@ -7,7 +7,8 @@ import { Exercise } from './models';
 export class ExerciseService {
 
   private exercises: Exercise[] = [
-    {id: 'HYLTw5lNPNNu9w', title: 'Leg press', imgUrl: 'https://placeimg.com/150/150/tech'},
+    {id: 'HYLTw5lNPNNu9w', title: 'Leg press',
+      imgUrl: 'https://firebasestorage.googleapis.com/v0/b/gymbuddy-be23.appspot.com/o/img%2Flegpress.jpg?alt=media'},
     {id: 'AELTwSAS11ewra', title: 'Shoulder press', imgUrl: 'https://placeimg.com/150/150/nature'},
     {id: 'DKdeedd12Ad21a', title: 'Arm curl', imgUrl: 'https://placeimg.com/100/100/arch'}
   ];
