@@ -4,6 +4,12 @@ export interface Exercise {
     imgUrl: string;
 }
 
+export enum Rating {
+    BAD,
+    OK,
+    GOOD
+}
+
 export interface Set {
     id: string;
     createdAt: Date;
@@ -11,6 +17,7 @@ export interface Set {
     exerciseID: string;
     repetitions: number;
     weight: number;
+    rating: Rating;
 }
 
 export interface User {
