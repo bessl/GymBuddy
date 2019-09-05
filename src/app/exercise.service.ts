@@ -1,27 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Exercise } from './models';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExerciseService {
 
-  private exercises: Exercise[] = [
-    {id: 'HYLTw5lNPNNu9w', title: 'Leg press',
-      imgUrl: 'https://firebasestorage.googleapis.com/v0/b/gymbuddy-be23.appspot.com/o/img%2Flegpress.jpg?alt=media'},
-    {id: 'AELTwSAS11ewra', title: 'Shoulder press', imgUrl: 'https://placeimg.com/150/150/nature'},
-    {id: 'DKdeedd12Ad21a', title: 'Arm curl', imgUrl: 'https://placeimg.com/100/100/arch'}
-  ];
+  private exercises: Exercise[] = [];
 
-  constructor() { }
+  constructor(
+    private angularFireStore: AngularFirestore
+  ) { }
 
   getExercises() {
-    return [...this.exercises];
+    return this.angularFireStore
+      .collection('exercise')
+      .valueChanges();
   }
 
   getExercise(exerciseID: string) {
+    return null;
+    /*
     return this.getExercises().find(
         e => e.id === exerciseID
     );
+     */
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ExerciseService} from '../exercise.service';
 import {Exercise} from '../models';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -8,10 +9,10 @@ import {Exercise} from '../models';
   styleUrls: ['./list.page.scss'],
 })
 export class ListPage implements OnInit {
+  exercises: Observable<any>;
 
-  exercises: Exercise[] = [];
-
-  constructor(private exerciseService: ExerciseService) {
+  constructor(
+    private exerciseService: ExerciseService) {
   }
 
   ngOnInit() {
