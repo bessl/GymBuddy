@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SetService } from '../set.service';
+import { UserService } from '../user.service';
+
 
 @Component({
   selector: 'app-add-set',
@@ -13,6 +16,8 @@ export class AddSetPage implements OnInit {
   constructor(
     navParams: NavParams,
     private modalController: ModalController,
+    private setService: SetService,
+    private userService: UserService,
     formBuilder: FormBuilder) {
     this.setFormGroup = formBuilder.group({
       weight: ['', [Validators.required]],
@@ -29,8 +34,16 @@ export class AddSetPage implements OnInit {
   }
 
   addSet() {
-    console.log('add set form sent.');
     console.log(this.setFormGroup.value.rating);
+    this.setService.addSet({
+      createdAt: new Date().getTime(),
+      createdBy: this.userService.getUid(),
+      exerciseID: 'xxx',
+      repetitions: this.setFormGroup.value.repetitions,
+      weight: this.setFormGroup.value.weight,
+      rating: this.setFormGroup.value.rating
+    });
+    this.closeModal();
   }
 
 }

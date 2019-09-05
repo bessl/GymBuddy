@@ -5,8 +5,8 @@ export interface Exercise {
 }
 
 export interface Set {
-    id: string;
-    createdAt: Date;
+    id?: string;
+    createdAt: number;
     createdBy: string;
     exerciseID: string;
     repetitions: number;
