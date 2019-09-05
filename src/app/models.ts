@@ -14,12 +14,6 @@ export interface Set {
     rating: number;
 }
 
-export interface User {
-    id: string;
-    email: string;
-    password: string;
-}
-
 export interface LoginCredential {
     email: string;
     password: string;

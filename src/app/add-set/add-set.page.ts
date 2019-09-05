@@ -34,7 +34,6 @@ export class AddSetPage implements OnInit {
   }
 
   addSet() {
-    console.log(this.setFormGroup.value.rating);
     this.setService.addSet({
       createdAt: new Date().getTime(),
       createdBy: this.userService.getUid(),
