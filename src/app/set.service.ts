@@ -8,18 +8,18 @@ import { Set } from './models';
 export class SetService {
 
   constructor(
-      private angularFirestore: AngularFirestore) {
+    private angularFirestore: AngularFirestore) {
   }
 
   addSet(set: Set) {
     this.angularFirestore
-        .collection('sets')
-        .add(set);
+      .collection('sets')
+      .add(set);
   }
 
   getSetsByExercise(exerciseId: string) {
-    return this.angularFirestore
-      .collection('sets')
-      .valueChanges();
+    return this.angularFirestore.collection('sets',
+        ref => ref.where('exerciseId', '==', exerciseId))
+        .valueChanges();
   }
 }

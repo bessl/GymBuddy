@@ -35,12 +35,13 @@ export class AddSetPage implements OnInit {
   }
 
   addSet() {
-    console.log(this.setFormGroup.value.rating);
     this.setService.addSet({
       createdAt: new Date().getTime(),
       createdBy: this.userService.getUid(),
-      exerciseID: this.exerciseId,
-      ...this.setFormGroup.value
+      exerciseId: this.exerciseId,
+      repetitions: +this.setFormGroup.value.repetitions,
+      weight: +this.setFormGroup.value.weight,
+      rating: +this.setFormGroup.value.rating
     });
     this.closeModal();
   }

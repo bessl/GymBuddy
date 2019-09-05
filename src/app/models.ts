@@ -8,7 +8,7 @@ export interface Set {
     id?: string;
     createdAt: number;
     createdBy: string;
-    exerciseID: string;
+    exerciseId: string;
     repetitions: number;
     weight: number;
     rating: number;
