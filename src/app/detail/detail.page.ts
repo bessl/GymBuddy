@@ -12,8 +12,10 @@ import {SetService} from '../set.service';
   styleUrls: ['./detail.page.scss'],
 })
 export class DetailPage implements OnInit {
+  private exerciseId: string;
   exercise: Observable<any>;
   sets: Observable<any>;
+  hasSets = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,15 +26,21 @@ export class DetailPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe( p => {
-      const exerciseId = p.get('exerciseId');
-      this.exercise = this.exerciseService.getExercise(exerciseId);
-      this.sets = this.setService.getSetsByExercise(exerciseId);
+      this.exerciseId = p.get('exerciseId');
+      this.exercise = this.exerciseService.getExercise(this.exerciseId);
+      this.sets = this.setService.getSetsByExercise(this.exerciseId);
+      this.sets.subscribe(res => {
+        this.hasSets = res.length > 0;
+      });
     });
   }
 
   async addSet() {
     const addSetModal = await this.modalController.create({
-      component: AddSetPage
+      component: AddSetPage,
+      componentProps: {
+        exerciseId: this.exerciseId
+      }
     });
     return await addSetModal.present();
   }

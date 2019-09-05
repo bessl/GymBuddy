@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SetService } from '../set.service';
@@ -11,6 +11,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./add-set.page.scss'],
 })
 export class AddSetPage implements OnInit {
+  @Input() exerciseId: string;
   setFormGroup: FormGroup;
 
   constructor(
@@ -38,7 +39,7 @@ export class AddSetPage implements OnInit {
     this.setService.addSet({
       createdAt: new Date().getTime(),
       createdBy: this.userService.getUid(),
-      exerciseID: 'SdUI5s3Tvq4UAEu88Lcj',  // FIXME
+      exerciseID: this.exerciseId,
       ...this.setFormGroup.value
     });
     this.closeModal();
