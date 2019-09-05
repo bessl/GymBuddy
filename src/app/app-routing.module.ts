@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: 'list', loadChildren: './list/list.module#ListPageModule', canActivate: [CanEnterContentPageGuard]},
   { path: 'detail/:exerciseId', loadChildren: './detail/detail.module#DetailPageModule', canActivate: [CanEnterContentPageGuard]},
-  { path: 'add-set', loadChildren: './add-set/add-set.module#AddSetPageModule', canActivate: [CanEnterContentPageGuard]},
   { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [CanEnterLoginPageGuard]},
 ];
 

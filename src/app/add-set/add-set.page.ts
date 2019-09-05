@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-set',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddSetPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    navParams: NavParams,
+    private modalController: ModalController) {
+    // this.videoURL = navParams.get("videoURL");
+  }
 
   ngOnInit() {
+  }
+
+  closeModal() {
+    this.modalController.dismiss();
   }
 
 }
