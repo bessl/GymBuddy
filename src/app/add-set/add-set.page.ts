@@ -17,7 +17,7 @@ export class AddSetPage implements OnInit {
     this.setFormGroup = formBuilder.group({
       weight: ['', [Validators.required]],
       repetitions: ['', [Validators.required]],
-      rating: ['', [Validators.required]],
+      rating: [''],
     });
   }
 
@@ -30,6 +30,7 @@ export class AddSetPage implements OnInit {
 
   addSet() {
     console.log('add set form sent.');
+    console.log(this.setFormGroup.value.rating);
   }
 
 }
