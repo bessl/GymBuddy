@@ -9,7 +9,7 @@ export class UserService {
   constructor(private angularFireAuth: AngularFireAuth) {
   }
 
-  getUid() {
+  getUid(): string {
     return this.angularFireAuth.auth.currentUser.uid;
   }
 }
