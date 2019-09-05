@@ -11,7 +11,7 @@ export interface Set {
     exerciseID: string;
     repetitions: number;
     weight: number;
-    rating?: number;
+    rating: number;
 }
 
 export interface User {

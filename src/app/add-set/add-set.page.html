@@ -5,6 +5,23 @@
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="setFormGroup">
+        <ion-item>
+          <ion-input formControlName="weight" type="number" placeholder="Weight"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input formControlName="repetitions" type="number" placeholder="Repetitions"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input formControlName="rating" type="number" placeholder="Rating"></ion-input>
+        </ion-item>
+        <ion-button (click)="addSet()" expand="full" [disabled]="setFormGroup.invalid">Save</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
   <ion-fab
           vertical="bottom"
           horizontal="center"

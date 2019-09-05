@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-set',
@@ -7,11 +8,17 @@ import { ModalController, NavParams } from '@ionic/angular';
   styleUrls: ['./add-set.page.scss'],
 })
 export class AddSetPage implements OnInit {
+  setFormGroup: FormGroup;
 
   constructor(
     navParams: NavParams,
-    private modalController: ModalController) {
-    // this.videoURL = navParams.get("videoURL");
+    private modalController: ModalController,
+    formBuilder: FormBuilder) {
+    this.setFormGroup = formBuilder.group({
+      weight: ['', [Validators.required]],
+      repetitions: ['', [Validators.required]],
+      rating: ['', [Validators.required]],
+    });
   }
 
   ngOnInit() {
@@ -19,6 +26,10 @@ export class AddSetPage implements OnInit {
 
   closeModal() {
     this.modalController.dismiss();
+  }
+
+  addSet() {
+    console.log('add set form sent.');
   }
 
 }

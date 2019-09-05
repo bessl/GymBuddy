@@ -1,5 +1,7 @@
 {
   "name": "GymBuddy",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
