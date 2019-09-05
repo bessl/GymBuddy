@@ -5,7 +5,6 @@ import {CanEnterContentPageGuard} from './can-enter-content-page.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'list', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   { path: 'list', loadChildren: './list/list.module#ListPageModule', canActivate: [CanEnterContentPageGuard]},
   { path: 'detail/:exerciseId', loadChildren: './detail/detail.module#DetailPageModule', canActivate: [CanEnterContentPageGuard]},
   { path: 'add-set', loadChildren: './add-set/add-set.module#AddSetPageModule', canActivate: [CanEnterContentPageGuard]},
