@@ -22,7 +22,7 @@ export class AddSetPage implements OnInit {
     this.setFormGroup = formBuilder.group({
       weight: ['', [Validators.required]],
       repetitions: ['', [Validators.required]],
-      rating: [''],
+      rating: ['1'],
     });
   }
 
@@ -34,13 +34,12 @@ export class AddSetPage implements OnInit {
   }
 
   addSet() {
+    console.log(this.setFormGroup.value.rating);
     this.setService.addSet({
       createdAt: new Date().getTime(),
       createdBy: this.userService.getUid(),
       exerciseID: 'SdUI5s3Tvq4UAEu88Lcj',  // FIXME
-      repetitions: this.setFormGroup.value.repetitions,
-      weight: this.setFormGroup.value.weight,
-      rating: this.setFormGroup.value.rating
+      ...this.setFormGroup.value
     });
     this.closeModal();
   }
