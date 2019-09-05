@@ -37,7 +37,7 @@ export class AddSetPage implements OnInit {
     this.setService.addSet({
       createdAt: new Date().getTime(),
       createdBy: this.userService.getUid(),
-      exerciseID: 'xxx',
+      exerciseID: 'SdUI5s3Tvq4UAEu88Lcj',  // FIXME
       repetitions: this.setFormGroup.value.repetitions,
       weight: this.setFormGroup.value.weight,
       rating: this.setFormGroup.value.rating

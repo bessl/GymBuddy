@@ -16,4 +16,10 @@ export class SetService {
         .collection('sets')
         .add(set);
   }
+
+  getSetsByExercise(exerciseId: string) {
+    return this.angularFirestore
+      .collection('sets')
+      .valueChanges();
+  }
 }

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ExerciseService } from '../exercise.service';
 import { Observable } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 import {AddSetPage} from '../add-set/add-set.page';
+import {SetService} from '../set.service';
 
 @Component({
   selector: 'app-detail',
@@ -12,16 +13,20 @@ import {AddSetPage} from '../add-set/add-set.page';
 })
 export class DetailPage implements OnInit {
   exercise: Observable<any>;
+  sets: Observable<any>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private modalController: ModalController,
-    private exerciseService: ExerciseService
+    private exerciseService: ExerciseService,
+    private setService: SetService
   ) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe( p => {
-      this.exercise = this.exerciseService.getExercise(p.get('exerciseId'));
+      const exerciseId = p.get('exerciseId');
+      this.exercise = this.exerciseService.getExercise(exerciseId);
+      this.sets = this.setService.getSetsByExercise(exerciseId);
     });
   }
 
