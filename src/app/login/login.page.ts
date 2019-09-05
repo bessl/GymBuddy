@@ -32,8 +32,7 @@ export class LoginPage implements OnInit {
     const loginCredential: LoginCredential = this.loginFormGroup.value;
     this.loginService.login(loginCredential)
       .then(authData => {
-        console.log(authData);
-        //this.router.navigate(['/list']);
+        this.router.navigate(['/list']);
       })
       .catch(authError => {
         this.messageService.showAlert('Sorry!', 'Something went wrong.', 'Login failed.');
