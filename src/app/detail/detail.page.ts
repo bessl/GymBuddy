@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ExerciseService} from '../exercise.service';
 import {Exercise} from '../models';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-detail',
@@ -9,14 +10,13 @@ import {Exercise} from '../models';
   styleUrls: ['./detail.page.scss'],
 })
 export class DetailPage implements OnInit {
-  exercise: Exercise;
+  exercise: Observable<any>;
 
   constructor(private activatedRoute: ActivatedRoute, private exerciseService: ExerciseService) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe( p => {
-      const exerciseId = p.get('exerciseId');
-      this.exercise = this.exerciseService.getExercise(exerciseId);
+      this.exercise = this.exerciseService.getExercise(p.get('exerciseId'));
     });
   }
 

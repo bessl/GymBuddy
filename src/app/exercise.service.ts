@@ -1,30 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Exercise } from './models';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExerciseService {
 
-  private exercises: Exercise[] = [];
-
   constructor(
     private angularFireStore: AngularFirestore
   ) { }
 
   getExercises() {
-    return this.angularFireStore
-      .collection('exercise')
-      .valueChanges();
+    return this.angularFireStore.collection<Exercise>('exercise').snapshotChanges()
+      .pipe(
+        map(exercises => {
+          return exercises.map(
+            e => ({ id: e.payload.doc.id, ...e.payload.doc.data() })  // map document ID
+          );
+        })
+      );
   }
 
   getExercise(exerciseID: string) {
-    return null;
-    /*
-    return this.getExercises().find(
-        e => e.id === exerciseID
-    );
-     */
+    return this.angularFireStore
+        .collection('exercise')
+        .doc(exerciseID)
+        .valueChanges();
   }
 }

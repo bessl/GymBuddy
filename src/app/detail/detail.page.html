@@ -3,12 +3,13 @@
     <ion-button slot="start">
       <ion-back-button defaultHref="/list"></ion-back-button>
     </ion-button>
-    <ion-title>{{exercise.title}}</ion-title>
+    <ion-title>{{(exercise | async)?.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-img [src]="exercise.imgUrl"></ion-img>
+  <ion-img [src]="(exercise | async)?.imgUrl"></ion-img>
+
 
   <ion-fab vertical="center" horizontal="end" slot="fixed">
     <ion-fab-button color="danger">
