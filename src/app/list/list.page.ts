@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ExerciseService} from '../exercise.service';
-import {Exercise} from '../models';
-import {Observable} from 'rxjs';
+import { ExerciseService } from '../exercise.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list',
