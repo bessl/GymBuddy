@@ -21,8 +21,9 @@ export class SetService {
     return this.angularFirestore.collection(
         'sets',
         ref => ref.where(
-            'exerciseId', '==', exerciseId)
-            // .orderBy('createdAt', 'desc')  TODO: waiting for firestore indexer ...
+          'exerciseId', '==', exerciseId)
+          .orderBy('createdAt', 'desc')
+          .limit(6)
         )
         .valueChanges();
   }
