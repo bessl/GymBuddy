@@ -15,8 +15,8 @@
           <ion-input formControlName="repetitions" type="number" placeholder="Repetitions"></ion-input>
         </ion-item>
         <ion-range formControlName="rating" ticks="true" min="0" max="1" step="1" snaps="true">
-          <ion-icon size="small" slot="start" name="thumbs-down"></ion-icon>
-          <ion-icon slot="end" name="thumbs-up"></ion-icon>
+          <ion-icon size="large" slot="start" name="thumbs-down"></ion-icon>
+          <ion-icon size="large" slot="end" name="thumbs-up"></ion-icon>
         </ion-range>
         <ion-button (click)="addSet()" expand="full" [disabled]="setFormGroup.invalid">Save</ion-button>
       </form>

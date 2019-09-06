@@ -20,14 +20,16 @@
     <ion-item *ngIf="hasSets">
       <ion-grid>
         <ion-row>
-          <ion-col size="4" text-center="center">
-            <b>Date</b>
+          <ion-col size="2">
           </ion-col>
-          <ion-col size="4" text-center="center">
+          <ion-col size="3" text-center="center">
             <b>Weight</b>
           </ion-col>
-          <ion-col size="4" text-center="center">
+          <ion-col size="3" text-center="center">
             <b>Reps</b>
+          </ion-col>
+          <ion-col size="4" text-center="center">
+            <b>At</b>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -35,14 +37,17 @@
     <ion-item *ngFor="let set of (sets | async)">
       <ion-grid>
         <ion-row>
-          <ion-col size="4" text-center="center">
-            {{set.createdAt|dateformater}}
+          <ion-col size="2" text-center="left">
+            <ion-icon size="small" class="thumbs" [name]="set.rating === 1 ? 'thumbs-up' : 'thumbs-down'"></ion-icon>
           </ion-col>
-          <ion-col size="4" text-center="center">
+          <ion-col size="3" text-center="center">
             {{set.weight}} Kg
           </ion-col>
-          <ion-col size="4" text-center="center">
-            {{set.repetitions}} Reps
+          <ion-col size="3" text-center="center">
+            {{set.repetitions}}
+          </ion-col>
+          <ion-col size="4" text-center="left">
+            {{set.createdAt|dateformater}}
           </ion-col>
         </ion-row>
       </ion-grid>
