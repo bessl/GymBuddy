@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { DetailPage } from './detail.page';
 import { AddSetPageModule } from '../add-set/add-set.module';
+import { DateformaterPipe} from '../dateformater.pipe';
 
 const routes: Routes = [
   {
@@ -21,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DetailPage]
+  declarations: [DetailPage, DateformaterPipe]
 })
 export class DetailPageModule {}
