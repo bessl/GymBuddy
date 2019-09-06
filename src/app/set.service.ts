@@ -18,8 +18,12 @@ export class SetService {
   }
 
   getSetsByExercise(exerciseId: string) {
-    return this.angularFirestore.collection('sets',
-        ref => ref.where('exerciseId', '==', exerciseId))
+    return this.angularFirestore.collection(
+        'sets',
+        ref => ref.where(
+            'exerciseId', '==', exerciseId)
+            // .orderBy('createdAt', 'desc')  TODO: waiting for firestore indexer ...
+        )
         .valueChanges();
   }
 }
