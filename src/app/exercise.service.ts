@@ -13,7 +13,9 @@ export class ExerciseService {
   ) { }
 
   getExercises() {
-    return this.angularFireStore.collection<Exercise>('exercise').snapshotChanges()
+    return this.angularFireStore.collection<Exercise>(
+        'exercise', ref => ref.orderBy('title'))
+        .snapshotChanges()
       .pipe(
         map(exercises => {
           return exercises.map(
