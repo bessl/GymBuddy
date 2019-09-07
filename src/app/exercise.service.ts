@@ -12,9 +12,9 @@ export class ExerciseService {
     private angularFireStore: AngularFirestore
   ) { }
 
-  getExercises() {
+  getExercises(trainingsDay: string) {
     return this.angularFireStore.collection<Exercise>(
-        'exercise', ref => ref.orderBy('title'))
+        'exercise', ref => ref.where('day', '==', +trainingsDay).orderBy('title'))
         .snapshotChanges()
       .pipe(
         map(exercises => {
