@@ -2,6 +2,7 @@ export interface Exercise {
     id: string;
     title: string;
     imgUrl: string;
+    day: number;
 }
 
 export interface Set {
