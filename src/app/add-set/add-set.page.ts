@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SetService } from '../set.service';
 import { UserService } from '../user.service';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -10,9 +11,12 @@ import { UserService } from '../user.service';
   templateUrl: './add-set.page.html',
   styleUrls: ['./add-set.page.scss'],
 })
-export class AddSetPage implements OnInit {
+export class AddSetPage implements OnInit, OnDestroy {
   @Input() exerciseId: string;
   setFormGroup: FormGroup;
+  setWeightValue: number;
+  setRepetitionsValue: number;
+  defaultSetValuesSubject: Subscription;
 
   constructor(
     navParams: NavParams,
@@ -28,6 +32,15 @@ export class AddSetPage implements OnInit {
   }
 
   ngOnInit() {
+    this.setService.getLastWeightValueByExercise(this.exerciseId);
+    this.defaultSetValuesSubject = this.setService.defaultSetValuesSubject.subscribe(d => {
+      this.setWeightValue = d.weight;
+      this.setRepetitionsValue = d.repetitions;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.defaultSetValuesSubject.unsubscribe();
   }
 
   closeModal() {
