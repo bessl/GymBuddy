@@ -1,13 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Exercises</ion-title>
-
-    <ion-select slot="end" #trainingsDaySelected [(ngModel)]="trainingsDay" (ionChange)="changeTrainingsDay(trainingsDaySelected.value);">
-      <ion-select-option value="1">Day 1</ion-select-option>
-      <ion-select-option value="2">Day 2</ion-select-option>
-    </ion-select>
-
   </ion-toolbar>
+  <ion-segment (ionChange)="changeDayFilter($event)">
+    <ion-segment-button value="1" checked>Day 1</ion-segment-button>
+    <ion-segment-button value="2">Day 2</ion-segment-button>
+  </ion-segment>
 </ion-header>
 
 <ion-content>

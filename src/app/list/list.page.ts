@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExerciseService } from '../exercise.service';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -10,21 +9,17 @@ import {map} from 'rxjs/operators';
 })
 export class ListPage implements OnInit {
   exercises: Observable<any>;
-  trainingsDay = '1';
-  trainingsDaySelected = new BehaviorSubject('1');
 
   constructor(
     private exerciseService: ExerciseService) {
   }
 
   ngOnInit() {
-    this.trainingsDaySelected.next('1');
-    this.exercises = this.exerciseService.getExercises(this.trainingsDaySelected.getValue());
+    this.exercises = this.exerciseService.getExercises('1');
   }
 
-  changeTrainingsDay(day) {
-    this.trainingsDaySelected.next(day);
-    this.exercises = this.exerciseService.getExercises(day);
+  changeDayFilter(event: any) {
+    this.exercises = this.exerciseService.getExercises(event.detail.value);
   }
 
 }
