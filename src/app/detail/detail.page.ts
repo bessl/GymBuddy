@@ -16,6 +16,7 @@ export class DetailPage implements OnInit {
   exercise: Observable<any>;
   sets: Observable<any>;
   hasSets = false;
+  backLink = '/list';
 
   constructor(
     private activatedRoute: ActivatedRoute,

@@ -1,7 +1,5 @@
 <ion-header>
-
-    <app-titlebar [title]="'Exercises'"></app-titlebar>
-
+  <app-header [title]="title"></app-header>
   <ion-segment (ionChange)="changeDayFilter($event)">
     <ion-segment-button value="1" checked>Day 1</ion-segment-button>
     <ion-segment-button value="2">Day 2</ion-segment-button>

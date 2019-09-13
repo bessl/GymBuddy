@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { DetailPage } from './detail.page';
 import { AddSetPageModule } from '../add-set/add-set.module';
 import { DateformaterPipe} from '../dateformater.pipe';
+import {SharedModule} from '../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
   declarations: [DetailPage, DateformaterPipe]
 })

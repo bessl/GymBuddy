@@ -9,6 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class ListPage implements OnInit {
   exercises: Observable<any>;
+  title = 'Exercises';
 
   constructor(
     private exerciseService: ExerciseService) {
