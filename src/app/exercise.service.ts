@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Exercise } from './models';
-import { AngularFirestore } from '@angular/fire/firestore';
-import {first, map} from 'rxjs/operators';
-import {HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GYMBUDDY_API_CONGIG } from './secrets';
 
 @Injectable({
@@ -15,7 +13,6 @@ export class ExerciseService {
   };
 
   constructor(
-    private angularFireStore: AngularFirestore,
     private http: HttpClient
   ) {
   }
