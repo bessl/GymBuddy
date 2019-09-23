@@ -1,0 +1,7 @@
+<ion-toolbar color="primary">
+  <ion-buttons slot="start" *ngIf="backLink">
+    <ion-back-button defaultHref="{{backLink}}"></ion-back-button>
+  </ion-buttons>
+  <img slot="end" margin-end="22" src="/assets/dumbbell.svg" width="33" height="33">
+  <ion-title>{{title}}</ion-title>
+</ion-toolbar>
