@@ -27,10 +27,11 @@ export class SetService {
   }
 
   getLastWeightValueByExercise(exerciseId: string) {
-    this.http.get(`${GYMBUDDY_API_CONGIG.url}/api/v1/exercises/${exerciseId}/last_weight`, this.header).subscribe(d => {
+    this.http.get(`${GYMBUDDY_API_CONGIG.url}/api/v1/exercises/${exerciseId}/last_weight`, this.header).subscribe((sets: Set[]) => {
       this.defaultSetValuesSubject.next(
-          {weight: 23, repetitions: 23}
-          // d.length === 1 ? {weight: d[0].weight, repetitions: d[0].repetitions} : {weight: null, repetitions: null}
+      (sets.length === 1) ?
+        {weight: sets[0].weight, repetitions: sets[0].repetitions} :
+        {weight: null, repetitions: null}
       );
     });
   }
