@@ -5,6 +5,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FIREBASE_CONFIG } from './secrets';
+import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -20,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFirestoreModule
