@@ -41,7 +41,10 @@ export class DetailPage implements OnInit {
       component: AddSetPage,
       componentProps: {
         exerciseId: this.exerciseId
-      }
+      },
+    });
+    addSetModal.onDidDismiss().then((data) => {
+      this.sets = this.setService.getSetsByExercise(this.exerciseId);
     });
     return await addSetModal.present();
   }
