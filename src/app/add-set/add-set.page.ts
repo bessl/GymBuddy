@@ -3,7 +3,7 @@ import { ModalController, NavParams } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SetService } from '../set.service';
 import { UserService } from '../user.service';
-import { Subscription } from 'rxjs';
+import {Subscription, throwError} from 'rxjs';
 
 
 @Component({
@@ -56,7 +56,7 @@ export class AddSetPage implements OnInit, OnDestroy {
       repetitions: +this.setFormGroup.value.repetitions,
       weight: +this.setFormGroup.value.weight,
       rating: +this.setFormGroup.value.rating
-    });
+    }).subscribe();
     this.closeModal();
   }
 

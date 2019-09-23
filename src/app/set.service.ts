@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Set } from './models';
 import { filter, map, first } from 'rxjs/operators';
-import {BehaviorSubject} from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { GYMBUDDY_API_CONGIG } from './secrets';
 
 @Injectable({
   providedIn: 'root'
@@ -10,26 +12,21 @@ import {BehaviorSubject} from 'rxjs';
 export class SetService {
 
   defaultSetValuesSubject = new BehaviorSubject<{ weight: number, repetitions: number }>({weight: null, repetitions: null});
+  private header = {
+    headers: new HttpHeaders().set('Authorization',  `Bearer ${GYMBUDDY_API_CONGIG.authToken}`)
+  };
 
   constructor(
+    private http: HttpClient,
     private angularFirestore: AngularFirestore) {
   }
 
   addSet(set: Set) {
-    this.angularFirestore
-      .collection('sets')
-      .add(set);
+    return this.http.post(`${GYMBUDDY_API_CONGIG.url}/api/v1/sets`, set, this.header);
   }
 
   getSetsByExercise(exerciseId: string) {
-    return this.angularFirestore.collection(
-        'sets',
-        ref => ref.where(
-          'exerciseId', '==', exerciseId)
-          .orderBy('createdAt', 'desc')
-          .limit(6)
-        )
-        .valueChanges();
+    return this.http.get(`${GYMBUDDY_API_CONGIG.url}/api/v1/sets/by_exercise/${exerciseId}`, this.header);
   }
 
   getLastWeightValueByExercise(exerciseId: string) {
