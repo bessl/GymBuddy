@@ -10,7 +10,7 @@
 <ion-list>
   <ion-item *ngFor="let e of (exercises | async); let i = index" [routerLink]="['/detail', e.id]">
     <ion-avatar slot="start">
-      <ion-img [src]="e.imgUrl"></ion-img>
+      <ion-img [src]="e.img_url"></ion-img>
     </ion-avatar>
     <ion-label>{{e.title}}</ion-label>
   </ion-item>
