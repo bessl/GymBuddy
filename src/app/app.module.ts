@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FIREBASE_CONFIG } from './secrets';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -23,8 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,
