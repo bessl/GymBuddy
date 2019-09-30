@@ -3,6 +3,7 @@ import { Set } from './models';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GYMBUDDY_API_CONGIG } from './secrets';
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,14 @@ import { GYMBUDDY_API_CONGIG } from './secrets';
 export class SetService {
 
   defaultSetValuesSubject = new BehaviorSubject<{ weight: number, repetitions: number }>({weight: null, repetitions: null});
-  private header = {
-    headers: new HttpHeaders().set('Authorization',  `Bearer ${GYMBUDDY_API_CONGIG.authToken}`)
-  };
+  private header;
 
   constructor(
-    private http: HttpClient) {
+    private http: HttpClient,
+    private apiService: ApiService) {
+      this.header = {
+        headers: new HttpHeaders().set('Authorization',  `Bearer ${apiService.authToken.getValue()}`)
+      };
   }
 
   addSet(set: Set) {
@@ -27,7 +30,7 @@ export class SetService {
   }
 
   getLastWeightValueByExercise(exerciseId: string) {
-    this.http.get(`${GYMBUDDY_API_CONGIG.url}/api/v1/exercises/${exerciseId}/last_weight`, this.header).subscribe((sets: Set[]) => {
+    this.http.get(`${GYMBUDDY_API_CONGIG.url}/api/v1/exercises/${exerciseId}/last_weight`, this.header).subscribe((sets: any) => {
       this.defaultSetValuesSubject.next(
       (sets.length === 1) ?
         {weight: sets[0].weight, repetitions: sets[0].repetitions} :

@@ -2,19 +2,21 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GYMBUDDY_API_CONGIG } from './secrets';
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExerciseService {
 
-  private header = {
-    headers: new HttpHeaders().set('Authorization',  `Bearer ${GYMBUDDY_API_CONGIG.authToken}`)
-  };
+  private header;
 
   constructor(
-    private http: HttpClient
-  ) {
+    private http: HttpClient,
+    private apiService: ApiService) {
+      this.header = {
+        headers: new HttpHeaders().set('Authorization',  `Bearer ${apiService.authToken.getValue()}`)
+      };
   }
 
   getExercises(trainingsDay: string) {
