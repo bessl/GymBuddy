@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Set } from './models';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { GYMBUDDY_API_CONGIG } from './secrets';
-import {ApiService} from './api.service';
+import { ApiService } from './api.service';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,15 +22,15 @@ export class SetService {
   }
 
   addSet(set: Set) {
-    return this.http.post(`${GYMBUDDY_API_CONGIG.url}/api/v1/sets`, set, this.header);
+    return this.http.post(`${environment.APIServerURL}/api/v1/sets`, set, this.header);
   }
 
   getSetsByExercise(exerciseId: string) {
-    return this.http.get(`${GYMBUDDY_API_CONGIG.url}/api/v1/sets/by_exercise/${exerciseId}`, this.header);
+    return this.http.get(`${environment.APIServerURL}/api/v1/sets/by_exercise/${exerciseId}`, this.header);
   }
 
   getLastWeightValueByExercise(exerciseId: string) {
-    this.http.get(`${GYMBUDDY_API_CONGIG.url}/api/v1/exercises/${exerciseId}/last_weight`, this.header).subscribe((sets: any) => {
+    this.http.get(`${environment.APIServerURL}/api/v1/exercises/${exerciseId}/last_weight`, this.header).subscribe((sets: any) => {
       this.defaultSetValuesSubject.next(
       (sets.length === 1) ?
         {weight: sets[0].weight, repetitions: sets[0].repetitions} :
