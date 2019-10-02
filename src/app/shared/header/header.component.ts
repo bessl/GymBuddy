@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Input() title: string;
   @Input() backLink: string;
+  environment = environment;
 
   constructor() { }
 
