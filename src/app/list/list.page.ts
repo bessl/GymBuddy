@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExerciseService } from '../exercise.service';
-import {Observable} from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -10,17 +10,26 @@ import {Observable} from 'rxjs';
 export class ListPage implements OnInit {
   exercises: Observable<any>;
   title = 'Exercises';
+  displayDay = new BehaviorSubject('1');
 
   constructor(
     private exerciseService: ExerciseService) {
   }
 
   ngOnInit() {
-    this.exercises = this.exerciseService.getExercises('1');
+  }
+
+  showExercises() {
+    this.exercises = this.exerciseService.getExercises(this.displayDay.getValue());
   }
 
   changeDayFilter(event: any) {
-    this.exercises = this.exerciseService.getExercises(event.detail.value);
+    this.displayDay.next(event.detail.value);
+    this.showExercises();
+  }
+
+  ionViewWillEnter() {
+    this.showExercises();
   }
 
 }
