@@ -18,7 +18,7 @@
           <ion-icon size="large" slot="start" name="thumbs-down"></ion-icon>
           <ion-icon size="large" slot="end" name="thumbs-up"></ion-icon>
         </ion-range>
-        <ion-button color="success" (click)="addSet()" expand="full" [disabled]="setFormGroup.invalid">Save</ion-button>
+        <ion-button color="success" (click)="addSet()" expand="full" [disabled]="setFormGroup.touched && setFormGroup.invalid">Save</ion-button>
       </form>
     </ion-card-content>
   </ion-card>
