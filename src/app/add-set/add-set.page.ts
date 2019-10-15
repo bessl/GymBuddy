@@ -1,9 +1,9 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SetService } from '../set.service';
 import { UserService } from '../user.service';
-import {Subscription, throwError} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 
 @Component({
