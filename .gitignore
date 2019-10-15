@@ -35,3 +35,4 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 /src/app/secrets.ts
 android
+build.sh
