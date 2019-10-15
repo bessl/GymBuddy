@@ -8,11 +8,11 @@
       <form [formGroup]="setFormGroup">
         <ion-item>
           <ion-label position="floating">Weight</ion-label>
-          <ion-input formControlName="weight" type="number" [value]="setWeightValue"></ion-input>
+            <ion-input formControlName="weight" type="number" [(ngModel)]="setWeightValue"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Repetitions</ion-label>
-          <ion-input formControlName="repetitions" type="number" [value]="setRepetitionsValue"></ion-input>
+          <ion-input formControlName="repetitions" type="number" [(ngModel)]="setRepetitionsValue"></ion-input>
         </ion-item>
         <ion-range formControlName="rating" ticks="true" min="0" max="1" step="1" snaps="true">
           <ion-icon size="large" slot="start" name="thumbs-down"></ion-icon>
