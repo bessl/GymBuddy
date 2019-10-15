@@ -27,7 +27,7 @@ export class AddSetPage implements OnInit, OnDestroy {
     formBuilder: FormBuilder) {
     this.setFormGroup = formBuilder.group({
       weight: ['', [Validators.required]],
-      repetitions: ['', [Validators.required]],
+      repetitions: ['10', [Validators.required]],
       rating: ['1'],
     });
   }
