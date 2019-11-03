@@ -36,3 +36,4 @@ UserInterfaceState.xcuserstate
 /src/app/secrets.ts
 android
 build.sh
+package-lock.json
