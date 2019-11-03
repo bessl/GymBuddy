@@ -11,6 +11,13 @@
     </ion-fab-button>
   </ion-fab>
 
+  <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed"> -->
+  <ion-fab vertical="top" horizontal="end" slot="fixed" style="margin-top:70px;" *ngIf="!countdownIsRunning">
+    <ion-fab-button color="tint" (click)="startCountdown()">
+      <ion-icon name="stopwatch"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-list>
     <ion-item *ngIf="hasSets">
       <ion-grid>
